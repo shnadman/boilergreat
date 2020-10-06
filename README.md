@@ -4,14 +4,20 @@
 
 1. clone repo
 
-2. `npm i ` for Installing deps
+2. install mongodb
 
-3. install mongodb
+3. cd into *server* folder and run in bash `npm i ` for installing dependencies from package.json  
 
-4. cd into server folder and `npm run dev` for setting up server
+4. cd into *client* folder and run in bash `npm i ` for installing dependencies from package.json  
 
-5. cd into client foler and `npm start` for setting up client
+## Commands and tips
+`npm run dev` for setting up server (in server folder)
+`npm start` for setting up client (in client folder)
 
-6. Happy hacking
+Install MongoDB Compass for accessing the database created.
+
+Install Postman for testing server response to requets.
+
+### Happy hacking
 
 
