@@ -33,6 +33,7 @@ export const signin = (formProps, callback) => async (dispatch, getState) => {
     localStorage.setItem("x-auth-token", response.data.token);
     callback();
   } catch (e) {
+    console.log(e);
     dispatch({ type: AUTH_ERROR, payload: e.response.data });
   }
 };

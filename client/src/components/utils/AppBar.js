@@ -6,6 +6,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import Modal from "./Modal";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,11 +47,6 @@ export default () => {
           <Link to="/signup">
             <Typography variant="h6" className={classes.menuButton}>
               Signup
-            </Typography>
-          </Link>
-          <Link to="/login">
-            <Typography variant="h6" className={classes.menuButton}>
-              Login
             </Typography>
           </Link>
         </Toolbar>

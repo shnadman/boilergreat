@@ -23,7 +23,7 @@ export default ({ dispatch }) => (next) => (action) => {
       action.payload
         ? dispatch(
             enqueueSnackbar(
-              makeNotification("Account created successfully! :)", "success")
+              makeNotification("Logged in successfully :)", "success")
             )
           )
         : dispatch(

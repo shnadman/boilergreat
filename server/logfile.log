@@ -38,3 +38,7 @@
 {"level":"info","message":"Connected to mongodb://localhost/playground...","timestamp":"2020-10-04T12:22:05.983Z"}
 {"level":"info","message":"Listening on port 3000...","timestamp":"2020-10-04T12:27:35.595Z"}
 {"level":"info","message":"Connected to mongodb://localhost/playground...","timestamp":"2020-10-04T12:27:37.615Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2020-10-06T18:37:22.109Z"}
+{"level":"info","message":"Connected to mongodb://localhost/playground...","timestamp":"2020-10-06T18:37:24.127Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2020-10-06T18:37:37.738Z"}
+{"level":"info","message":"Connected to mongodb://localhost/playground...","timestamp":"2020-10-06T18:37:39.762Z"}

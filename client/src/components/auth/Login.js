@@ -6,10 +6,10 @@ import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
+
 import * as actions from "../../actions";
 
 import { renderTextField } from "../utils/ReduxFormUtils";
@@ -21,20 +21,20 @@ const Login = (props) => {
 
   const onSubmit = (formProps) => {
     props.signin(_.pick(formProps, "email", "password"), () => {
-      props.history.push("/");
+      props.onClose();
     });
   };
 
   const { handleSubmit, pristine, reset, submitting, invalid } = props;
   return (
     <Container maxWidth="xs">
-      <Paper className={classes.paper}>
+      <Box className={classes.paper}>
         <Box alignSelf="center">
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Log in
           </Typography>
         </Box>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -87,9 +87,8 @@ const Login = (props) => {
               Clear Values
             </Button>
           </Box>
-          <Box>{props.errorMessage}</Box>
         </form>
-      </Paper>
+      </Box>
     </Container>
   );
 };
