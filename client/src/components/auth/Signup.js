@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { Field, reduxForm } from "redux-form";
 import _ from "lodash";
-import { compose } from "redux";
-import { connect, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-
-import * as actions from "../../actions";
-import { renderTextField } from "../utils/ReduxFormUtils";
-import validate from "../utils/validation";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 
+import { renderTextField } from "../utils/ReduxFormUtils";
+import validate from "../utils/validation";
+import { signup } from "../../features/auth";
 import useStyles from "./styles/authStyles";
 
 const Signup = (props) => {
   const [showPassword, setShowPassword] = useState({ showPassword: false });
+  const dispatch = useDispatch();
 
   const handleClickShowPassword = () => {
     setShowPassword({ showPassword: !showPassword });
@@ -27,9 +26,11 @@ const Signup = (props) => {
   const classes = useStyles();
 
   const onSubmit = (formProps) => {
-    props.signup(_.pick(formProps, "name", "email", "password"), () => {
-      props.history.push("/");
-    });
+    dispatch(
+      signup(_.pick(formProps, "name", "email", "password"), () => {
+        props.history.push("/");
+      })
+    );
   };
 
   const { handleSubmit, pristine, reset, submitting, invalid } = props;
@@ -112,11 +113,4 @@ const Signup = (props) => {
   );
 };
 
-function mapStateToProps(state) {
-  return { errorMessage: state.auth.errorMessage };
-}
-
-export default compose(
-  connect(mapStateToProps, actions),
-  reduxForm({ form: "signin", validate })
-)(Signup);
+export default reduxForm({ form: "signin", validate })(Signup);

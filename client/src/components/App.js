@@ -3,7 +3,6 @@ import { Router, Route, Switch } from "react-router-dom";
 import Homepage from "./Homepage";
 import history from "../history";
 import Signup from "./auth/Signup";
-import Login from "./auth/Login";
 import Feature from "./RestrictedFeature";
 import Box from "@material-ui/core/Box";
 import Signout from "./auth/Signout";

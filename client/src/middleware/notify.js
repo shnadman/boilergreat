@@ -1,7 +1,5 @@
 import React from "react";
-import { AUTH_ERROR, AUTH_USER } from "../actions/types";
 import { closeSnackbar, enqueueSnackbar } from "../actions/snackbarActions";
-import Button from "@material-ui/core/Button";
 
 const makeNotification = (message, variant) => ({
   message,
@@ -15,11 +13,11 @@ const makeNotification = (message, variant) => ({
 
 export default ({ dispatch }) => (next) => (action) => {
   switch (action.type) {
-    case AUTH_ERROR:
+    case "auth/authError":
       dispatch(enqueueSnackbar(makeNotification(action.payload, "warning")));
       next(action);
       break;
-    case AUTH_USER:
+    case "auth/authSuccess":
       action.payload
         ? dispatch(
             enqueueSnackbar(

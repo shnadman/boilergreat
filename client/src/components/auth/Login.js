@@ -1,8 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import _ from "lodash";
-import { compose } from "redux";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -10,19 +9,21 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 
-import * as actions from "../../actions";
-
+import { login } from "../../features/auth";
 import { renderTextField } from "../utils/ReduxFormUtils";
 import validate from "../utils/validation";
 import useStyles from "./styles/authStyles";
 
 const Login = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const onSubmit = (formProps) => {
-    props.signin(_.pick(formProps, "email", "password"), () => {
-      props.onClose();
-    });
+    dispatch(
+      login(_.pick(formProps, "email", "password"), () => {
+        props.onClose();
+      })
+    );
   };
 
   const { handleSubmit, pristine, reset, submitting, invalid } = props;
@@ -93,11 +94,4 @@ const Login = (props) => {
   );
 };
 
-function mapStateToProps(state) {
-  return { errorMessage: state.auth.errorMessage };
-}
-
-export default compose(
-  connect(mapStateToProps, actions),
-  reduxForm({ form: "signin", validate })
-)(Login);
+export default reduxForm({ form: "signin", validate })(Login);
